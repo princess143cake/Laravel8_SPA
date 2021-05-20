@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\File;
 use Illuminate\Support\Facades\Storage;
@@ -10,9 +11,15 @@ class AjaxController extends Controller
 {
 
 
+
+
     public function home()
     {
-        return view('home.home');
+
+        $users = User::all();
+
+        return view('home.home', compact('users'));
+     
     }
 
     public function inbound()
@@ -37,6 +44,7 @@ class AjaxController extends Controller
 
           
            
+            $menu = view("layouts.menu-sidebar")->render();
            
             $modalUser = view("layouts.modal.modal-user")->render();
             $activeHomeMenu = view("layouts.menu_active.active-home-menu")->render();
@@ -52,7 +60,7 @@ class AjaxController extends Controller
                     'title' => 'Inbound',
                     'description' => 'Inbound',
                     'url' => 'http://127.0.0.1:8000/inbound',
-                    'menu' => $activeInboundMenu,
+                    'menu' => $menu,
                     'active' => 'active',
                     'modal_user' => $modalUser,
                     'script' => $script,
@@ -71,7 +79,7 @@ class AjaxController extends Controller
                     'status' => 'success',
                     'title' => 'Outbound',
                     'description' => 'PHP description',
-                    'menu' => $activeOutboundMenu,
+                    'menu' => $menu,
                     'url' => 'http://127.0.0.1:8000/outbound',
                     'data'=>   $html, // Get a content from $request->code
           
@@ -86,7 +94,7 @@ class AjaxController extends Controller
                     'description' => 'Home description',
                     'url' => 'http://127.0.0.1:8000/home',
                     'data'=>   $html, // Get a content from $request->code
-                    'menu' =>$activeHomeMenu,
+                    'menu' =>$menu,
                     // 'data' => 'This is <strong>Home</strong> data coming from ajax url'
                 ));
             } 

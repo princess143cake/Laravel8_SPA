@@ -1,0 +1,57 @@
+.page-container {
+    opacity: 1;
+    transition: 500ms;
+    transform-origin: left;
+  }
+  
+  html.is-animating .page-container {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  
+  html.is-leaving .page-container {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  
+  .transition-swipe {
+    transition: 500ms;
+    transform: translateY(0);
+  }
+  
+  html.is-animating .transition-swipe {
+    transform: translateY(100px);
+  }
+  
+  
+  .fade-in {
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+  }
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
